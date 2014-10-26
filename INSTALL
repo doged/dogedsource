@@ -1,0 +1,9 @@
+Building DogeCoinDark
+
+See doc/readme-qt.rst for instructions on building DogeCoinDark QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of DogeCoinDark.
+
+See doc/build-*.txt for instructions on building DogeCoinDarkd,
+the intended-for-services, no-graphical-interface, reference
+implementation of DogeCoinDark.

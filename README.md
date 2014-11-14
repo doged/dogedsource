@@ -1,5 +1,10 @@
 DogecoinDark [DOGED] Source Code
 
+to clone and compile:
+git clone https://github.com/doged/dogedsource
+cd dogedsource/src
+make -f makefile.unix
+
 
 Algorithm: scrypt
 PoW

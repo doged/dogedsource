@@ -142,7 +142,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     progressBarLabel->move(398, 518);
     progressBarLabel->setVisible(false);
     progressBar = new QProgressBar(overviewPage);
-    progressBar->size(100,20);
+    progressBar->resize(100,20);
     progressBar->move(680, 516);
     progressBar->setAlignment(Qt::AlignBottom);
     

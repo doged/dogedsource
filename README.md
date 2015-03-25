@@ -51,5 +51,5 @@ make -f makefile.unix
 then ./dogecoindarkd -daemon
 (youll get a message telling you to make a conf file)
 then make a DogeCoinDark.conf file in the newly created ~/.DogeCoinDark folder
-then go back into the dogedsource/src folder and ./dogecoindarkd -daemon again
+then go back into the /dogedsource/src folder and "./dogecoindarkd -daemon" again
 

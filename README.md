@@ -2,7 +2,7 @@ DogecoinDark [DOGED] Source Code
 
 Algorithm: scrypt
 
-PoW
+PoW (proof of work)
 
 Blocktime: 30seconds
 

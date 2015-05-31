@@ -1,9 +1,15 @@
 DogecoinDark [DOGED] Source Code
+
 Algorithm: scrypt
+
 PoW
+
 Blocktime: 30seconds
+
 RPC port: 20102
+
 P2P port: 21102
+
 
 Blockreward: 
 

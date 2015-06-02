@@ -1,5 +1,7 @@
 DogecoinDark [DOGED] Source Code
 
+![Electrum-DOGED](http://dogecoindark.net/img/logo-dark@2x.png)
+
 Algorithm: scrypt
 
 PoW (proof of work)

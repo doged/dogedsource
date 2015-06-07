@@ -54,3 +54,5 @@ then make a DogeCoinDark.conf file in the newly created ~/.DogeCoinDark folder
 then go back into the /dogedsource/src folder and "./dogecoindarkd -daemon" again
 
 now just wait for the blockchain to download. you can check status by typing "./dogecoindarkd getinfo" in the dogedsource/src/  directory
+
+[![Visit our IRC Chat!](https://kiwiirc.com/buttons/irc.freenode.net/dogecoindark.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=doged|?&theme=cli#dogecoindark)

@@ -38,7 +38,7 @@ Approximately total reward: 13 Billion (13,000,000,000) during first six months 
 
 if you have never compiled a wallet in linux before, here are the dependencies you will need:
 
-sudo apt-get install build-essential pkg-config libtool autotools-dev autoconf automake libssl-dev libboost-all-dev libdb5.1-dev libdb5.1++-dev libminiupnpc-dev libdb++-dev qt4-qmake libqt4-dev libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libminiupnpc8 git
+sudo apt-get install build-essential pkg-config libtool autotools-dev autoconf automake libssl-dev libboost-all-dev libdb5.1-dev libdb5.1++-dev libminiupnpc-dev libdb++-dev qt4-qmake libqt4-dev libboost-all-dev libssl-dev libminiupnpc8 git
 
 to clone and compile:
 git clone https://github.com/doged/dogedsource && cd dogedsource/src && make -f makefile.unix

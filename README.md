@@ -51,6 +51,14 @@ then make a DogeCoinDark.conf file in the newly created ~/.DogeCoinDark folder
 
 (its hidden, so use la instead of ls to see it)
 
+example DogeCoinDark.conf:
+rpcuser=whateverusername
+rpcpassword=whateverpassword
+rpcport=20102
+port=21102
+
+
+
 then go back into the /dogedsource/src folder and "./dogecoindarkd -daemon" again
 
 now just wait for the blockchain to download. you can check status by typing "./dogecoindarkd getinfo" in the dogedsource/src/  directory

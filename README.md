@@ -63,4 +63,5 @@ then go back into the /dogedsource/src folder and "./dogecoindarkd -daemon" agai
 
 now just wait for the blockchain to download. you can check status by typing "./dogecoindarkd getinfo" in the dogedsource/src/  directory
 
+come check out our live chat:
 [![Visit our IRC Chat!](https://kiwiirc.com/buttons/irc.freenode.net/dogecoindark.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=doged|?&theme=cli#dogecoindark)

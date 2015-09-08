@@ -216,6 +216,8 @@ HEADERS += src/qt/bitcoingui.h \
     src/version.h \
     src/netbase.h \
     src/clientversion.h \
+	src/qt/chatwindow.h \
+	src/qt/serveur.h \
 	src/qt/blockbrowser.h
 
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
@@ -284,6 +286,8 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/scrypt-x86_64.S \
     src/scrypt_mine.cpp \
     src/pbkdf2.cpp \
+	src/qt/chatwindow.cpp \
+	src/qt/serveur.cpp \
 	src/qt/blockbrowser.cpp
 
 RESOURCES += \
@@ -301,6 +305,7 @@ FORMS += \
     src/qt/forms/sendcoinsentry.ui \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
+	src/qt/forms/chatwindow.ui \
 	src/qt/forms/blockbrowser.ui \
     src/qt/forms/optionsdialog.ui
 

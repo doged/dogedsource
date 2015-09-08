@@ -9,6 +9,9 @@ install:
 script:
 - make -f makefile.unix -j 5
 - cd ..
+irc:
+channels:
+- "chat.freenode.net#dogecoindark"
 template:
 - "%{repository}/%{branch} (%{commit} - %{author}): %{message}"
 - "Alt Message : %{repository_slug} - (%{commit} - %{author}): %{message}, Build Time: %{duration}"

@@ -33,7 +33,7 @@ Block 0 to 14,000 : 200,000 coins
 
 2,124,000 to 4,248,000: 730 coins
 
-Approximately total reward: 13 Billion (13,000,000,000) during first six months then issuing 1 billion every next year.
+Approximately total reward: 13 Billion (13,000,000,000) during first year then issuing 1 billion every next year.
 
 
 if you have never compiled a wallet in linux before, here are the dependencies you will need:

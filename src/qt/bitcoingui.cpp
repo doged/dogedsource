@@ -28,6 +28,7 @@
 #include "rpcconsole.h"
 #include "wallet.h"
 #include "chatwindow.h"
+#include "stealthsend.h"
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"

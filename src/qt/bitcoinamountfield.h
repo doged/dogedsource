@@ -35,6 +35,7 @@ public:
         in these cases we have to set it up manually.
     */
     QWidget *setupTabChain(QWidget *prev);
+    QString text() const;
 
 signals:
     void textChanged();
@@ -49,7 +50,6 @@ private:
     int currentUnit;
 
     void setText(const QString &text);
-    QString text() const;
 
 private slots:
     void unitChanged(int idx);

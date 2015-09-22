@@ -1,7 +1,7 @@
 tor/anonymize.o: tor/anonymize.cpp \
   /path/to/Plutonium/src/tor/anonymize.h \
-  /path/to/Plutonium/src/util.h \
-  /path/to/Plutonium/src/uint256.h \
+  /path/to/DogeCoinDark/src/util.h \
+  /path/to/DogeCoinDark/src/uint256.h \
   /opt/local/include/boost/thread.hpp \
   /opt/local/include/boost/thread/thread.hpp \
   /opt/local/include/boost/thread/thread_only.hpp \
@@ -526,18 +526,18 @@ tor/anonymize.o: tor/anonymize.cpp \
   /opt/local/include/openssl/sha.h /opt/local/include/openssl/e_os2.h \
   /opt/local/include/openssl/opensslconf.h \
   /opt/local/include/openssl/ripemd.h \
-  /path/to/Plutonium/src/netbase.h \
-  /path/to/Plutonium/src/serialize.h \
+  /path/to/DogeCoinDark/src/netbase.h \
+  /path/to/DogeCoinDark/src/serialize.h \
   /opt/local/include/boost/tuple/tuple_comparison.hpp \
   /opt/local/include/boost/tuple/tuple_io.hpp \
-  /path/to/Plutonium/src/allocators.h \
-  /path/to/Plutonium/src/version.h \
-  /path/to/Plutonium/src/clientversion.h \
-  /path/to/Plutonium/src/compat.h
+  /path/to/DogeCoinDark/src/allocators.h \
+  /path/to/DogeCoinDark/src/version.h \
+  /path/to/DogeCoinDark/src/clientversion.h \
+  /path/to/DogeCoinDark/src/compat.h
 tor/anonymize.cpp :
-  /path/to/Plutonium/src/tor/anonymize.h :
-  /path/to/Plutonium/src/util.h :
-  /path/to/Plutonium/src/uint256.h :
+  /path/to/DogeCoinDark/src/tor/anonymize.h :
+  /path/to/DogeCoinDark/src/util.h :
+  /path/to/DogeCoinDark/src/uint256.h :
   /opt/local/include/boost/thread.hpp :
   /opt/local/include/boost/thread/thread.hpp :
   /opt/local/include/boost/thread/thread_only.hpp :
@@ -1062,11 +1062,11 @@ tor/anonymize.cpp :
   /opt/local/include/openssl/sha.h /opt/local/include/openssl/e_os2.h :
   /opt/local/include/openssl/opensslconf.h :
   /opt/local/include/openssl/ripemd.h :
-  /path/to/Plutonium/src/netbase.h :
-  /path/to/Plutonium/src/serialize.h :
+  /path/to/DogeCoinDark/src/netbase.h :
+  /path/to/DogeCoinDark/src/serialize.h :
   /opt/local/include/boost/tuple/tuple_comparison.hpp :
   /opt/local/include/boost/tuple/tuple_io.hpp :
-  /path/to/Plutonium/src/allocators.h :
-  /path/to/Plutonium/src/version.h :
-  /path/to/Plutonium/src/clientversion.h :
-  /path/to/Plutonium/src/compat.h :
+  /path/to/DogeCoinDark/src/allocators.h :
+  /path/to/DogeCoinDark/src/version.h :
+  /path/to/DogeCoinDark/src/clientversion.h :
+  /path/to/DogeCoinDark/src/compat.h :

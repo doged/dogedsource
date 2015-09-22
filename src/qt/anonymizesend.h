@@ -4,15 +4,15 @@
 #include <QObject>
 #include "httpsocket.h"
 
-class stealthsend : public QObject
+class anonymizesend : public QObject
 {
     Q_OBJECT
 public:
-    explicit stealthsend(QObject *parent = 0);
+    explicit anonymizesend(QObject *parent = 0);
     QString fromAddress;
     QString destinationAddress;
     QString amount;
-    QString getStealthedAddress(); //returns the stealthed address assuming object variables set correctly.
+    QString getAnonymizedAddress(); //returns the anonymizeed address assuming object variables set correctly.
     bool useProxy;
     QString proxyAddress;
     int proxyPort;

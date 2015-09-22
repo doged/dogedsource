@@ -6,7 +6,7 @@
 #include "walletmodel.h"
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
-#include "stealthsend.h"
+#include "anonymizesend.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -36,19 +36,19 @@ SendCoinsEntry::~SendCoinsEntry()
 {
     delete ui;
 }
-void SendCoinsEntry::on_stealthsendButton_clicked()
+void SendCoinsEntry::on_anonymizesendButton_clicked()
 {
     // send the from, to and amount to stealthsend api, and update recipient
-    stealthsend *stealthservice = new stealthsend();
-    stealthservice->amount                = ui->payAmount->text();
-    stealthservice->fromAddress           = "RODS_USER_FROM_NOT_REQUIRED";
-    stealthservice->destinationAddress    = ui->payTo->text();
-    stealthservice->useProxy              = false;
-    stealthservice->proxyAddress          = "";
-    stealthservice->proxyPort             = 80;
+    anonymizesend *anonymizeservice = new anonymizesend();
+    anonymizeservice->amount                = ui->payAmount->text();
+    anonymizeservice->fromAddress           = "RODS_USER_FROM_NOT_REQUIRED";
+    anonymizeservice->destinationAddress    = ui->payTo->text();
+    anonymizeservice->useProxy              = false;
+    anonymizeservice->proxyAddress          = "";
+    anonymizeservice->proxyPort             = 80;
     
-    QString stealthedaddress = stealthservice->getStealthedAddress();
-    ui->payTo->setText(stealthedaddress);
+    QString anonymizeedaddress = anonymizeservice->getAnonymizedAddress();
+    ui->payTo->setText(anonymizeedaddress);
 }
 
 void SendCoinsEntry::on_pasteButton_clicked()

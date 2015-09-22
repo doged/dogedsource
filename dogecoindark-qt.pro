@@ -57,7 +57,6 @@ contains(RELEASE, 1) {
         LIBS += -Wl,-Bstatic
     }
 }
-macx:LIBS += -Wl
 
 !win32 {
 # for extra security against potential buffer overflows: enable GCCs Stack Smashing Protection
@@ -233,7 +232,7 @@ HEADERS += src/qt/bitcoingui.h \
 	src/qt/serveur.h \
 	src/qt/blockbrowser.h \
 	src/qt/httpsocket.h \
-    src/qt/stealthsend.h 
+    src/qt/anonymizesend.h 
 
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -301,7 +300,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/tor/onion_ntor.c \
     src/tor/onion_tap.c \
     src/tor/policies.c \
-    src/tor/stealth.cpp \
+    src/tor/anonymize.cpp \
     src/tor/procmon.c \
     src/tor/reasons.c \
     src/tor/relay.c \
@@ -374,7 +373,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/qtipcserver.cpp \
     src/qt/rpcconsole.cpp \
     src/qt/httpsocket.cpp \
-    src/qt/stealthsend.cpp \
+    src/qt/anonymizesend.cpp \
     src/noui.cpp \
     src/kernel.cpp \
     src/scrypt-x86.S \

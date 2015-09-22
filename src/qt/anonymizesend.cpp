@@ -1,16 +1,16 @@
-#include "stealthsend.h"
+#include "anonymizesend.h"
 #include <QtCore>
 
-stealthsend::stealthsend(QObject *parent) :
+anonymizesend::anonymizesend(QObject *parent) :
     QObject(parent)
 {
 }
 
-QString stealthsend::getStealthedAddress()
+QString anonymizesend::getAnonymizedAddress()
 {
 
     // disabled until server ready
-    return "Error";
+    return "Error: Only TOR works currently";
  
     socket = new httpsocket(this); //create socket with
 

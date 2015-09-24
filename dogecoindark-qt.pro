@@ -317,7 +317,6 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/tor/tortls.c \
     src/tor/transports.c \
     src/tor/util_codedigest.c \
-    
     src/version.cpp \
     src/sync.cpp \
     src/util.cpp \

@@ -667,12 +667,6 @@ void CNode::copyStats(CNodeStats &stats)
 
 
 
-
-
-
-
-
-
 void ThreadSocketHandler(void* parg)
 {
     // Make this thread recognisable as the networking thread
@@ -766,31 +760,31 @@ void ThreadSocketHandler2(void* parg)
             }
         }
 // count secured connections
-int unsecured = 0;
-int secured = 0;
-vector<CNode*> vNodesUnsecure;
-BOOST_FOREACH(CNode* pnode, vNodesCopy)
-{
-if (GetTime() - pnode->nTimeConnected < 60) {
-continue;
-}
-if (
-!pnode->fInbound || pnode->fVerified
-) {
-secured++;
-} else {
-unsecured++;
-vNodesUnsecure.push_back(pnode);
-}
-}
-if (
-0 > 2 * secured - 3 * unsecured
-) {
-random_shuffle(vNodesUnsecure.begin(), vNodesUnsecure.end(), GetRandInt);
-printf("removing unsecured connection %s\n", (*vNodesUnsecure.begin())->addr.ToString().c_str());
-(*vNodesUnsecure.begin())->fDisconnect = true;
-}
-}
+            int unsecured = 0;
+            int secured = 0;
+            vector<CNode*> vNodesUnsecure;
+            BOOST_FOREACH(CNode* pnode, vNodesCopy)
+            {
+                if (GetTime() - pnode->nTimeConnected < 60) {
+                    continue;
+                }
+                if (
+                    !pnode->fInbound || pnode->fVerified
+                ) {
+                    secured++;
+                } else {
+                    unsecured++;
+                    vNodesUnsecure.push_back(pnode);
+                }
+            }
+            if (
+                0 > 2 * secured - 3 * unsecured
+            ) {
+                random_shuffle(vNodesUnsecure.begin(), vNodesUnsecure.end(), GetRandInt);
+                printf("removing unsecured connection %s\n", (*vNodesUnsecure.begin())->addr.ToString().c_str());
+                (*vNodesUnsecure.begin())->fDisconnect = true;
+            }
+        }
         if (vNodes.size() != nPrevNodeCount)
         {
             nPrevNodeCount = vNodes.size();
@@ -1056,6 +1050,8 @@ void ThreadMapPort(void* parg)
 {
     // Make this thread recognisable as the UPnP thread
     RenameThread("bitcoin-UPnP");
+    
+    printf("ThreadMapPort started\n");
 
     try
     {
@@ -1176,11 +1172,6 @@ void MapPort()
     // Intentionally left blank.
 }
 #endif
-
-
-
-
-
 
 
 

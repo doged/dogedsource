@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = dogecoindark-qt
 VERSION = 0.7.2
-INCLUDEPATH += src src/json src/qt src/tor
+INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES
 CONFIG += no_include_pwd
 CONFIG += thread
@@ -71,7 +71,6 @@ win32:QMAKE_LFLAGS *= -Wl,--large-address-aware -static
 win32:QMAKE_LFLAGS += -static-libgcc -static-libstdc++
 lessThan(QT_MAJOR_VERSION, 5): win32: QMAKE_LFLAGS *= -static
 
-USE_QRCODE=1
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
 contains(USE_QRCODE, 1) {
@@ -105,15 +104,17 @@ contains(USE_DBUS, 1) {
     QT += dbus
 }
 
-# use: qmake "FIRST_CLASS_MESSAGING=1"
-contains(FIRST_CLASS_MESSAGING, 1) {
-    message(Building with first-class messaging)
-    DEFINES += FIRST_CLASS_MESSAGING
-
-# use: qmake "FIRST_CLASS_MESSAGING=1"
-contains(FIRST_CLASS_MESSAGING, 1) {
-message(Building with first-class messaging)
-DEFINES += FIRST_CLASS_MESSAGING
+# use: qmake "USE_IPV6=1" ( enabled by default; default)
+#  or: qmake "USE_IPV6=0" (disabled by default)
+#  or: qmake "USE_IPV6=-" (not supported)
+contains(USE_IPV6, -) {
+    message(Building without IPv6 support)
+} else {
+    message(Building with IPv6 support)
+    count(USE_IPV6, 0) {
+        USE_IPV6=1
+    }
+    DEFINES += USE_IPV6=$$USE_IPV6
 }
 
 contains(BITCOIN_NEED_QT_PLUGINS, 1) {
@@ -121,12 +122,6 @@ contains(BITCOIN_NEED_QT_PLUGINS, 1) {
     QTPLUGIN += qcncodecs qjpcodecs qtwcodecs qkrcodecs qtaccessiblewidgets
 }
 
-!win32 {
-    # for extra security against potential buffer overflows
-    QMAKE_CXXFLAGS += -fstack-protector
-    QMAKE_LFLAGS += -fstack-protector
-    # do not enable this on windows, as it will result in a non-working executable!
-}
 
 # regenerate src/build.h
 !windows|contains(USE_BUILD_INFO, 1) {
@@ -223,9 +218,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/clientversion.h \
 	src/qt/chatwindow.h \
 	src/qt/serveur.h \
-	src/qt/blockbrowser.h \
-	src/qt/httpsocket.h \
-    src/qt/anonymizesend.h 
+	src/qt/blockbrowser.h
 
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -240,83 +233,6 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/editaddressdialog.cpp \
     src/qt/bitcoinaddressvalidator.cpp \
     src/alert.cpp \
-    src/tor/address.c \
-    src/tor/addressmap.c \
-    src/tor/aes.c \
-    src/tor/backtrace.c \
-    src/tor/buffers.c \
-    src/tor/channel.c \
-    src/tor/channeltls.c \
-    src/tor/circpathbias.c \
-    src/tor/circuitbuild.c \
-    src/tor/circuitlist.c \
-    src/tor/circuitmux.c \
-    src/tor/circuitmux_ewma.c \
-    src/tor/circuitstats.c \
-    src/tor/circuituse.c \
-    src/tor/command.c \
-    src/tor/compat.c \
-    src/tor/compat_libevent.c \
-    src/tor/config.c \
-    src/tor/config_codedigest.c \
-    src/tor/confparse.c \
-    src/tor/connection.c \
-    src/tor/connection_edge.c \
-    src/tor/connection_or.c \
-    src/tor/container.c \
-    src/tor/control.c \
-    src/tor/cpuworker.c \
-    src/tor/crypto.c \
-    src/tor/crypto_curve25519.c \
-    src/tor/crypto_format.c \
-    src/tor/curve25519-donna.c \
-    src/tor/di_ops.c \
-    src/tor/directory.c \
-    src/tor/dirserv.c \
-    src/tor/dirvote.c \
-    src/tor/dns.c \
-    src/tor/dnsserv.c \
-    src/tor/entrynodes.c \
-    src/tor/ext_orport.c \
-    src/tor/fp_pair.c \
-    src/tor/geoip.c \
-    src/tor/hibernate.c \
-    src/tor/log.c \
-    src/tor/memarea.c \
-    src/tor/mempool.c \
-    src/tor/microdesc.c \
-    src/tor/networkstatus.c \
-    src/tor/nodelist.c \
-    src/tor/onion.c \
-    src/tor/onion_fast.c \
-    src/tor/onion_main.c \
-    src/tor/onion_ntor.c \
-    src/tor/onion_tap.c \
-    src/tor/policies.c \
-    src/tor/anonymize.cpp \
-    src/tor/procmon.c \
-    src/tor/reasons.c \
-    src/tor/relay.c \
-    src/tor/rendclient.c \
-    src/tor/rendcommon.c \
-    src/tor/rendmid.c \
-    src/tor/rendservice.c \
-    src/tor/rephist.c \
-    src/tor/replaycache.c \
-    src/tor/router.c \
-    src/tor/routerlist.c \
-    src/tor/routerparse.c \
-    src/tor/routerset.c \
-    src/tor/sandbox.c \
-    src/tor/statefile.c \
-    src/tor/status.c \
-    src/tor/strlcat.c \
-    src/tor/strlcpy.c \
-    src/tor/tor_util.c \
-    src/tor/torgzip.c \
-    src/tor/tortls.c \
-    src/tor/transports.c \
-    src/tor/util_codedigest.c \
     src/version.cpp \
     src/sync.cpp \
     src/util.cpp \
@@ -364,8 +280,6 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/notificator.cpp \
     src/qt/qtipcserver.cpp \
     src/qt/rpcconsole.cpp \
-    src/qt/httpsocket.cpp \
-    src/qt/anonymizesend.cpp \
     src/noui.cpp \
     src/kernel.cpp \
     src/scrypt-x86.S \
@@ -496,7 +410,7 @@ macx:QMAKE_CXXFLAGS_THREAD += -pthread
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
 INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
-LIBS += -lssl -levent -lz -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
+LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 # -lgdi32 has to happen after -lcrypto (see  #681)
 windows:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
 LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX

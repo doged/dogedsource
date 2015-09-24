@@ -3014,7 +3014,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         } else {
             addrFrom.SetPort(GetDefaultPort());
             pfrom->addr = addrFrom;
-            if CNode::IsBanned())
+            if (CNode::IsBanned())
             {
             	printf("connection from %s dropped (banned)\n", addrFrom.ToString().c_str());
                 pfrom->fDisconnect = true;

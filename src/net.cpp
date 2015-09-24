@@ -52,7 +52,7 @@ struct LocalServiceInfo {
 // Global state variables
 //
 bool fClient = false;
-fUseUPnP = GetBoolArg("-upnp", USE_UPNP);
+//fUseUPnP = GetBoolArg("-upnp", USE_UPNP);
 bool fUseUPnP = false;
 uint64 nLocalServices = (fClient ? 0 : NODE_NETWORK);
 static CCriticalSection cs_mapLocalHost;
@@ -484,7 +484,9 @@ CNode* ConnectNode(CAddress addrConnect, const char *pszDest, int64 nTimeout)
             return pnode;
         }
     }
-
+    if (fDebug) {
+         printf("ConnectNode(): pszDest: %s\n", pszDest);
+    }
 
     /// debug print
     printf("trying connection %s lastseen=%.1fhrs\n",
@@ -553,31 +555,31 @@ void CNode::PushVersion()
     /// when NTP implemented, change to just nTime = GetAdjustedTime()
     int64 nTime = (fInbound ? GetAdjustedTime() : GetTime());
     uint64 verification_token = 0;
-if (
-!fInbound
-) {
-if (!addrman.GetReconnectToken(addr, verification_token)) {
-RAND_bytes((unsigned char*)&verification_token, sizeof(verification_token));
-addrman.SetVerificationToken(
-addr,
-verification_token
-);
-}
-}
+    if (
+        !fInbound
+    ) {
+        if (!addrman.GetReconnectToken(addr, verification_token)) {
+            RAND_bytes((unsigned char*)&verification_token, sizeof(verification_token));
+            addrman.SetVerificationToken(
+                addr,
+                verification_token
+            );
+        }
+    }
 
-if (fDebug) {
-if (addr.IsRoutable()) {
-printf("PushVersion(): Address is routable (good)\n");
-} else {
-printf("PushVersion(): Address not routable (bad)\n");
-}
+    if (fDebug) {
+      if (addr.IsRoutable()) {
+         printf("PushVersion(): Address is routable (good)\n");
+      } else {
+         printf("PushVersion(): Address not routable (bad)\n");
+      }
 
-if (IsProxy(addr)) {
-printf("PushVersion(): Address is proxy (bad)\n");
-} else {
-printf("PushVersion(): Address not proxy (good)\n");
-}
-}
+      if (IsProxy(addr)) {
+         printf("PushVersion(): Address is proxy (bad)\n");
+      } else {
+         printf("PushVersion(): Address not proxy (good)\n");
+      }
+    }
     CAddress addrYou = (addr.IsRoutable() && !IsProxy(addr) ? addr : CAddress(CService("0.0.0.0",0)));
     CAddress addrMe = GetLocalAddress(&addr);
     RAND_bytes((unsigned char*)&nLocalHostNonce, sizeof(nLocalHostNonce));

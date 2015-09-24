@@ -36,6 +36,7 @@ SendCoinsEntry::~SendCoinsEntry()
 {
     delete ui;
 }
+
 void SendCoinsEntry::on_anonymizesendButton_clicked()
 {
     // send the from, to and amount to stealthsend api, and update recipient

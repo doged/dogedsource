@@ -3014,17 +3014,17 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         } else {
             addrFrom.SetPort(GetDefaultPort());
             pfrom->addr = addrFrom;
-            if (CNode::IsBanned())
+            if (CNode::IsBanned(addrFrom))
             {
-            	printf("connection from %s dropped (banned)\n", addrFrom.ToString().c_str());
+                printf("connection from %s dropped (banned)\n", addrFrom.ToString().c_str());
                 pfrom->fDisconnect = true;
                 return true;
             }
-                if (addrman.CheckVerificationToken(addrFrom, verification_token)) {
+            if (addrman.CheckVerificationToken(addrFrom, verification_token)) {
                 printf("connection from %s verified\n", addrFrom.ToString().c_str());
-                 pfrom->fVerified = true;
-                 addrman.Good(pfrom->addr);
-                } else {
+                pfrom->fVerified = true;
+                addrman.Good(pfrom->addr);
+            } else {
                 printf("couldn't verify %s\n", addrFrom.ToString().c_str());
                 addrman.SetReconnectToken(addrFrom, verification_token);
             }

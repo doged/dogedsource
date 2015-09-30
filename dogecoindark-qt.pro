@@ -79,7 +79,7 @@ contains(USE_QRCODE, 1) {
     LIBS += -lqrencode
 }
 
-# USE_UPNP=1
+USE_UPNP=1
 # use: qmake "USE_UPNP=1" ( enabled by default; default)
 #  or: qmake "USE_UPNP=0" (disabled by default)
 #  or: qmake "USE_UPNP=-" (not supported)

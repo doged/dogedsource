@@ -82,7 +82,7 @@ private:
     QAction *overviewAction;
 	QAction *blockAction;
 	QAction *chatAction;
-	Qaction *radioAction
+	Qaction *demoPlayerAction
     QAction *historyAction;
     QAction *quitAction;
     QAction *sendCoinsAction;

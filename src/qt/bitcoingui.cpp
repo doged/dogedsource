@@ -223,7 +223,7 @@ void BitcoinGUI::createActions()
     chatAction->setCheckable(true);
     tabGroup->addAction(chatAction);
     
-    radioAction = new QAction(QIcon(":/icons/radio"), tr("&DOGED Radio"), this);
+    radioAction = new QAction(QIcon(":/icons/radio"), tr("&Radio"), this);
     radioAction->setToolTip(tr("listen to DOGED radio"));
     radioAction->setCheckable(true);
     tabGroup->addAction(radioAction);

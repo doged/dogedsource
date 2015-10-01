@@ -223,10 +223,10 @@ void BitcoinGUI::createActions()
     chatAction->setCheckable(true);
     tabGroup->addAction(chatAction);
     
-    chatAction = new QAction(QIcon(":/icons/radio"), tr("&DOGED Radio"), this);
-    chatAction->setToolTip(tr("listen to DOGED radio"));
-    chatAction->setCheckable(true);
-    tabGroup->addAction(chatAction);
+    radioAction = new QAction(QIcon(":/icons/radio"), tr("&DOGED Radio"), this);
+    radioAction->setToolTip(tr("listen to DOGED radio"));
+    radioAction->setCheckable(true);
+    tabGroup->addAction(radioAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a DogeCoinDark address"));

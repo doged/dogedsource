@@ -29,12 +29,15 @@
 #include "wallet.h"
 #include "chatwindow.h"
 #include "anonymizesend.h"
+#include "DemoPlayer.h"
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
 #endif
 
 #include <QApplication>
+#include <QTextCodec>
+#include <QCoreApplication>
 #include <QMainWindow>
 #include <QMenuBar>
 #include <QMenu>
@@ -59,6 +62,7 @@
 #include <QDragEnterEvent>
 #include <QUrl>
 #include <QStyle>
+
 
 #include <iostream>
 
@@ -106,6 +110,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     overviewPage = new OverviewPage();
 	chatWindow = new ChatWindow(this);
 	blockBrowser = new BlockBrowser(this);
+	demoPlayer = new DemoPlayer(this);
 
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
@@ -124,6 +129,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget = new QStackedWidget(this);
     centralWidget->addWidget(overviewPage);
 	centralWidget->addWidget(chatWindow);
+	centralWidget->addWidget(demoPlayer);
 	centralWidget->addWidget(blockBrowser);
 	centralWidget->addWidget(transactionsPage);
     centralWidget->addWidget(addressBookPage);
@@ -216,6 +222,11 @@ void BitcoinGUI::createActions()
 	chatAction->setToolTip(tr("View chat"));
     chatAction->setCheckable(true);
     tabGroup->addAction(chatAction);
+    
+    chatAction = new QAction(QIcon(":/icons/radio"), tr("&DOGED Radio"), this);
+    chatAction->setToolTip(tr("listen to DOGED radio"));
+    chatAction->setCheckable(true);
+    tabGroup->addAction(chatAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a DogeCoinDark address"));
@@ -249,6 +260,7 @@ void BitcoinGUI::createActions()
 	
 	connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
 	connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));
+	connect(radioAction, SIGNAL(triggered()), this, SLOT(gotoDemoPlayer)));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -357,6 +369,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(addressBookAction);
 	toolbar->addAction(blockAction);
 	toolbar->addAction(chatAction);
+	toolbar->addAction(radioAction);
     QWidget* spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     toolbar->addWidget(spacer);
@@ -419,6 +432,7 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         // Put transaction list in tabs
         transactionView->setModel(walletModel);
 		chatWindow->setModel(clientModel);
+		radioWindow->setModel(clientModel);
         overviewPage->setModel(walletModel);
         addressBookPage->setModel(walletModel->getAddressTableModel());
         receiveCoinsPage->setModel(walletModel->getAddressTableModel());
@@ -742,6 +756,15 @@ void BitcoinGUI::gotoChatPage()
 {
     chatAction->setChecked(true);
     centralWidget->setCurrentWidget(chatWindow);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
+void BitcoinGUI::gotoRadioPage()
+{
+    radioAction->setChecked(true);
+    centralWidget->setCurrentWidget(radioWindow);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);

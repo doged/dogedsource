@@ -1,30 +1,30 @@
 #include <QMainWindow>
  
 namespace Ui {
-    class radioplayer;
+    class DemoPlayer;
 }
  
 class VlcInstance;
 class VlcMedia;
 class VlcMediaPlayer;
  
-class radioplayer : public QMainWindow
+class DemoPlayer : public QMainWindow
 {
 Q_OBJECT
 public:
-    explicit radioplayer(QWidget *parent = 0);
-    ~radioplayer();
+    explicit DemoPlayer(QWidget *parent = 0);
+    ~DemoPlayer();
  
 private slots:
     void openLocal();
     void openUrl();
  
 private:
-    Ui::radioplayer *ui;
+    Ui::DemoPlayer *ui;
  
     VlcInstance *_instance;
     VlcMedia *_media;
     VlcMediaPlayer *_player;
 };
  
-#endif // RADIOPLAYER_H_
+#endif // DEMOPLAYER_H_

@@ -260,7 +260,7 @@ void BitcoinGUI::createActions()
 	
 	connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
 	connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));
-	connect(radioAction, SIGNAL(triggered()), this, SLOT(gotoDemoPlayer)));
+	connect(demoPlayerAction, SIGNAL(triggered()), this, SLOT(gotoDemoPlayer)));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));

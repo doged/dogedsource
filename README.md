@@ -41,6 +41,9 @@ if you have never compiled a wallet in linux before, here are the dependencies y
 sudo apt-get install build-essential libqrencode-dev libevent-dev pkg-config libtool autotools-dev autoconf automake libssl-dev libboost-all-dev libminiupnpc-dev libdb++-dev qt4-qmake libqt4-dev libboost-all-dev libssl-dev git
 
 to clone and compile:
+
+cd ~
+
 git clone https://github.com/doged/dogedsource && cd dogedsource/src && make -f makefile.unix
 
 then ./dogecoindarkd -daemon
@@ -59,7 +62,7 @@ port=21102
 
 
 
-then go back into the /dogedsource/src folder and "./dogecoindarkd -daemon" again
+then go back into the ~/dogedsource/src folder and "./dogecoindarkd -daemon" again
 
 now just wait for the blockchain to download. you can check status by typing "./dogecoindarkd getinfo" in the dogedsource/src/  directory
 

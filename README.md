@@ -38,9 +38,12 @@ Approximately total reward: 13 Billion (13,000,000,000) during first year then i
 
 if you have never compiled a wallet in linux before, here are the dependencies you will need:
 
-sudo apt-get install build-essential libqrencode-dev libevent-dev pkg-config libtool autotools-dev autoconf automake libssl-dev libboost-all-dev libdb5.1-dev libdb5.1++-dev libminiupnpc-dev libdb++-dev qt4-qmake libqt4-dev libboost-all-dev libssl-dev libminiupnpc8 git
+sudo apt-get install build-essential libqrencode-dev libevent-dev pkg-config libtool autotools-dev autoconf automake libssl-dev libboost-all-dev libminiupnpc-dev libdb++-dev qt4-qmake libqt4-dev libboost-all-dev libssl-dev git
 
 to clone and compile:
+
+cd ~
+
 git clone https://github.com/doged/dogedsource && cd dogedsource/src && make -f makefile.unix
 
 then ./dogecoindarkd -daemon
@@ -52,16 +55,20 @@ then make a DogeCoinDark.conf file in the newly created ~/.DogeCoinDark folder
 (its hidden, so use la instead of ls to see it)
 
 example DogeCoinDark.conf:
+
 rpcuser=whateverusername
+
 rpcpassword=whateverpassword
+
 rpcport=20102
+
 port=21102
 
 
 
-then go back into the /dogedsource/src folder and "./dogecoindarkd -daemon" again
+then go back into the ~/dogedsource/src folder and "./dogecoindarkd -daemon" again
 
-now just wait for the blockchain to download. you can check status by typing "./dogecoindarkd getinfo" in the dogedsource/src/  directory
+now just wait for the blockchain to download. you can check status by typing "./dogecoindarkd getinfo" in the ~/dogedsource/src/  directory
 
 come check out our live chat:
 [![Visit our IRC Chat!](https://kiwiirc.com/buttons/irc.freenode.net/dogecoindark.png)](https://kiwiirc.com/client/irc.freenode.net/?nick=doged|?&theme=cli#dogecoindark)

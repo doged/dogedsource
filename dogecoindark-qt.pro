@@ -6,7 +6,7 @@ DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROV
 CONFIG += no_include_pwd
 CONFIG += thread
 CONFIG += static
-QT += core gui network
+QT += core gui network widgets
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -218,7 +218,8 @@ HEADERS += src/qt/bitcoingui.h \
     src/clientversion.h \
 	src/qt/chatwindow.h \
 	src/qt/serveur.h \
-	src/qt/blockbrowser.h
+	src/qt/blockbrowser.h \
+	src/qt/DemoPlayer.h
 
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -288,7 +289,8 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/pbkdf2.cpp \
 	src/qt/chatwindow.cpp \
 	src/qt/serveur.cpp \
-	src/qt/blockbrowser.cpp
+	src/qt/blockbrowser.cpp \
+	src/qt/DemoPlayer.cpp
 
 RESOURCES += \
     src/qt/bitcoin.qrc
@@ -307,7 +309,8 @@ FORMS += \
     src/qt/forms/rpcconsole.ui \
 	src/qt/forms/chatwindow.ui \
 	src/qt/forms/blockbrowser.ui \
-    src/qt/forms/optionsdialog.ui
+    src/qt/forms/optionsdialog.ui \
+    src/qt/forms/DemoPlayer.ui
 
 contains(USE_QRCODE, 1) {
 HEADERS += src/qt/qrcodedialog.h

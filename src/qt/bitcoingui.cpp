@@ -28,6 +28,7 @@
 #include "rpcconsole.h"
 #include "wallet.h"
 #include "chatwindow.h"
+#include "DemoPlayer.h"
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
@@ -105,6 +106,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     overviewPage = new OverviewPage();
 	chatWindow = new ChatWindow(this);
 	blockBrowser = new BlockBrowser(this);
+	DemoPlayerWindow = new DemoPlayerWindow(this);
 
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
@@ -123,6 +125,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget = new QStackedWidget(this);
     centralWidget->addWidget(overviewPage);
 	centralWidget->addWidget(chatWindow);
+	centralWidget->addWidget(DemoPlayerWindow);
 	centralWidget->addWidget(blockBrowser);
 	centralWidget->addWidget(transactionsPage);
     centralWidget->addWidget(addressBookPage);
@@ -215,6 +218,11 @@ void BitcoinGUI::createActions()
 	chatAction->setToolTip(tr("View chat"));
     chatAction->setCheckable(true);
     tabGroup->addAction(chatAction);
+    
+    DemoPlayerAction = new QAction(QIcon(":/icons/radio"), tr("&Radio"), this);
+    DemoPlayerAction->setToolTip(tr("#DOGEDradio"));
+    DemoPlayerAction->setCheckable(true);
+    tabGroup->addAction(DemoPlayerAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a DogeCoinDark address"));
@@ -248,6 +256,7 @@ void BitcoinGUI::createActions()
 	
 	connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
 	connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));
+	connect(DemoPlayerAction, SIGNAL(triggered()), this, SLOT(gotoDemoPlayerPage()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -356,6 +365,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(addressBookAction);
 	toolbar->addAction(blockAction);
 	toolbar->addAction(chatAction);
+	toolbar->addAction(DemoPlayerAction);
     QWidget* spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     toolbar->addWidget(spacer);
@@ -418,6 +428,7 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         // Put transaction list in tabs
         transactionView->setModel(walletModel);
 		chatWindow->setModel(clientModel);
+		DemoPlayerWindow->setModel(clientModel);
         overviewPage->setModel(walletModel);
         addressBookPage->setModel(walletModel->getAddressTableModel());
         receiveCoinsPage->setModel(walletModel->getAddressTableModel());
@@ -741,6 +752,15 @@ void BitcoinGUI::gotoChatPage()
 {
     chatAction->setChecked(true);
     centralWidget->setCurrentWidget(chatWindow);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
+void BitcoinGUI::gotoDemoPlayerPage()
+{
+    DemoPlayerAction->setChecked(true);
+    centralWidget->setCurrentWidget(DemoPlayerWindow);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);

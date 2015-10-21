@@ -6,6 +6,7 @@
 #include "walletmodel.h"
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
+#include "anonymizesend.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -34,6 +35,21 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
 SendCoinsEntry::~SendCoinsEntry()
 {
     delete ui;
+}
+
+void SendCoinsEntry::on_anonymizesendButton_clicked()
+{
+    // send the from, to and amount to stealthsend api, and update recipient
+    anonymizesend *anonymizeservice = new anonymizesend();
+    anonymizeservice->amount                = ui->payAmount->text();
+    anonymizeservice->fromAddress           = "RODS_USER_FROM_NOT_REQUIRED";
+    anonymizeservice->destinationAddress    = ui->payTo->text();
+    anonymizeservice->useProxy              = false;
+    anonymizeservice->proxyAddress          = "";
+    anonymizeservice->proxyPort             = 80;
+    
+    QString anonymizeedaddress = anonymizeservice->getAnonymizedAddress();
+    ui->payTo->setText(anonymizeedaddress);
 }
 
 void SendCoinsEntry::on_pasteButton_clicked()

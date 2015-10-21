@@ -766,7 +766,7 @@
         <string>Confirm the send action</string>
        </property>
        <property name="text">
-        <string>S&amp;end</string>
+        <string>S&amp;end via TOR</string>
        </property>
        <property name="icon">
         <iconset resource="../bitcoin.qrc">

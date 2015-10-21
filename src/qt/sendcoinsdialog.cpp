@@ -12,6 +12,7 @@
 #include "askpassphrasedialog.h"
 #include "coincontrol.h"
 #include "coincontroldialog.h"
+#include "anonymizesend.h"
 
 #include <QMessageBox>
 #include <QLocale>

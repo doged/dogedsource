@@ -106,7 +106,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     overviewPage = new OverviewPage();
 	chatWindow = new ChatWindow(this);
 	blockBrowser = new BlockBrowser(this);
-	DemoPlayerWindow = new DemoPlayerWindow(this);
+	DemoPlayer = new DemoPlayer(this);
 
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
@@ -125,7 +125,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget = new QStackedWidget(this);
     centralWidget->addWidget(overviewPage);
 	centralWidget->addWidget(chatWindow);
-	centralWidget->addWidget(DemoPlayerWindow);
+	centralWidget->addWidget(DemoPlayer);
 	centralWidget->addWidget(blockBrowser);
 	centralWidget->addWidget(transactionsPage);
     centralWidget->addWidget(addressBookPage);

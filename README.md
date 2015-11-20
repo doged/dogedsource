@@ -33,7 +33,7 @@ Compiling Linux Wallet
 
 if you have never compiled a wallet in linux before, here are the dependencies you will need:
 
-    sudo apt-get install build-essential pkg-config libtool autotools-dev autoconf automake libssl-dev libboost-all-dev libdb5.1-dev libdb5.1++-dev libminiupnpc-dev libdb++-dev qt4-qmake libqt4-dev libboost-all-dev libssl-dev libminiupnpc8 git
+    sudo apt-get install build-essential pkg-config libtool autotools-dev autoconf automake libssl-dev libboost-all-dev  libminiupnpc-dev libdb++-dev libdb-dev qt4-qmake libqt4-dev libboost-all-dev libssl-dev libminiupnpc8 git
 
 to clone and compile:
 

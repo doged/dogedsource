@@ -8,7 +8,7 @@ Specification
 
 * Algorithm: scrypt
 * PoW (proof of work)
-* Blocktime: 30seconds
+* Blocktime: ~5 minutes
 * RPC port: 20102
 * P2P port: 21102
 * Blockreward: 
@@ -25,7 +25,7 @@ Specification
 Total Supply
 ------------
 
-Approximately total reward: 13 Billion (13,000,000,000) during first year then issuing 1 billion every next year.
+Approximately total reward: 9 Billion (9,000,000,000) during first year then issuing 1 billion (1,000,000,000) each year after.
 
 
 Compiling Linux Wallet
@@ -43,9 +43,14 @@ then
 
     ./dogecoindarkd -daemon
 
-(youll get a message telling you to make a conf file)
+(youll get a message telling you to make a DogeCoinDark.conf file)
 
-then make a DogeCoinDark.conf file in the newly created `~/.DogeCoinDark` folder 
+then make a DogeCoinDark.conf file in the newly created `~/.DogeCoinDark` folder:
+
+cd ~/.DogeCoinDark
+sudo nano DogeCoinDark.conf
+(then add text below)
+
 
 (its hidden, so use la instead of ls to see it)
 

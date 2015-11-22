@@ -39,6 +39,10 @@ to clone and compile:
 
     git clone https://github.com/doged/dogedsource && cd dogedsource/src && make -f makefile.unix
 
+to make the qt gui wallet:
+
+    git clone https://github.com/doged/dogedsource && cd dogedsource && qmake && make
+
 then
 
     ./dogecoindarkd -daemon

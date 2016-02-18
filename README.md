@@ -1,5 +1,8 @@
+
+WE HAVE MOVED TO http://github.com/vergecurrency/verge
+========================================================
+
 DogecoinDark [DOGED] Source Code
-================================
 
 ![Electrum-DOGED](http://dogecoindark.net/img/logo-dark@2x.png)
 
